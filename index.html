@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>ex-dischi-musicali</title>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+
+        <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="vue-coll">
+          <header>
+              <div class="container">
+                  <img src="logo.png" alt="logo" />
+                  <select v-model="genere" class="" name="" @change="filter">
+                    <option
+                    value="Rock">Rock</option>
+                    <option
+                    value="Metal">Metal</option>
+                    <option
+                    value="Jazz">Jazz</option>
+                    <option
+                    value="Pop">Pop</option>
+                  </select>
+              </div>
+          </header>
+
+          <div class="cds-container container">
+              <!-- Disco ad esempio -->
+              <template v-if="filteredCdArray != ''">
+                <div class="cd" v-for="cd in filteredCdArray">
+                    <img v-bind:src="cd.poster" alt="immagine">
+                    <h3>{{cd.author}}</h3>
+                    <span class="author">{{cd.title}}</span>
+                    <span class="year">{{cd.year}}</span>
+                    <span class="genre">{{cd.genre}}</span>
+                </div>
+              </template>
+
+              <template v-else>
+                <div class="cd" v-for="cd in cdArray">
+                    <img v-bind:src="cd.poster" alt="immagine">
+                    <h3>{{cd.author}}</h3>
+                    <span class="author">{{cd.title}}</span>
+                    <span class="year">{{cd.year}}</span>
+                    <span class="genre">{{cd.genre}}</span>
+                </div>
+              </template>
+          </div>
+        </div>
+
+        <script src="main.js" charset="utf-8"></script>
+    </body>
+</html>
